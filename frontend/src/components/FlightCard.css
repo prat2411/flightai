@@ -1,0 +1,53 @@
+.flight-card {
+  background: #ffffff;
+  border: 1px solid #d7e6ff;
+  border-radius: 14px;
+  box-shadow: 0 8px 16px rgba(12, 46, 98, 0.08);
+  padding: 14px;
+}
+
+.flight-card-top {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.flight-card-top h3 {
+  color: #10386f;
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.flight-airline {
+  background: #ecf4ff;
+  border: 1px solid #cae0ff;
+  border-radius: 999px;
+  color: #205391;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+.flight-date {
+  color: #3f5880;
+  margin: 10px 0 14px;
+}
+
+.flight-metrics {
+  display: flex;
+  gap: 24px;
+}
+
+.metric-label {
+  color: #4e6790;
+  display: block;
+  font-size: 0.78rem;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  color: #122f5d;
+  font-size: 1rem;
+}

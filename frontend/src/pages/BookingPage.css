@@ -1,0 +1,130 @@
+.booking-page {
+  display: grid;
+  gap: 16px;
+}
+
+.booking-header h1 {
+  color: #10386f;
+  margin: 0 0 8px;
+}
+
+.booking-header p {
+  color: #3f5880;
+  margin: 0;
+}
+
+.booking-muted {
+  color: #3f5880;
+  margin: 0;
+}
+
+.booking-empty {
+  background: #f7fbff;
+  border: 1px dashed #bad6ff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.booking-empty p {
+  color: #2e4c77;
+  margin: 0 0 8px;
+}
+
+.booking-empty a {
+  color: #1558b0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.booking-layout {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.booking-flight-card,
+.booking-form-card {
+  background: #ffffff;
+  border: 1px solid #d9e7ff;
+  border-radius: 14px;
+  box-shadow: 0 8px 14px rgba(8, 42, 92, 0.08);
+  padding: 16px;
+}
+
+.booking-flight-card h2 {
+  color: #123b74;
+  margin: 0 0 8px;
+}
+
+.booking-flight-card p {
+  color: #3f5880;
+  margin: 0 0 12px;
+}
+
+.booking-flight-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.booking-flight-meta span {
+  background: #eff5ff;
+  border: 1px solid #d3e4ff;
+  border-radius: 999px;
+  color: #204f8f;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+
+.booking-form-card {
+  display: grid;
+  gap: 12px;
+}
+
+.booking-form-card label {
+  color: #264875;
+  display: grid;
+  font-size: 0.86rem;
+  font-weight: 600;
+  gap: 6px;
+}
+
+.booking-form-card input {
+  border: 1px solid #c5d9fb;
+  border-radius: 10px;
+  min-height: 38px;
+  padding: 8px 10px;
+}
+
+.booking-form-card button {
+  background: #155fbe;
+  border: 1px solid #155fbe;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 700;
+  min-height: 38px;
+}
+
+.booking-form-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.booking-error {
+  color: #b91c1c;
+  margin: 0;
+}
+
+.booking-success {
+  color: #126734;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
