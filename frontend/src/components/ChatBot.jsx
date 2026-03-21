@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { buildChatbotUrl } from "../api/config";
+import { buildChatbotUrl, isChatbotConfigured } from "../api/config";
 import "./ChatBot.css";
 
 const buildHistoryPairs = (messages) => {
@@ -60,6 +60,10 @@ const ChatBot = () => {
 		setLoading(true);
 
 		try {
+			if (!isChatbotConfigured) {
+				throw new Error("Chatbot API URL is not configured.");
+			}
+
 			const response = await fetch(buildChatbotUrl("/chat"), {
 				method: "POST",
 				headers: {
