@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { buildApiUrl } from "../api/config";
 import { useAuth } from "../context/AuthContext";
 import "./Dashboard.css";
 
@@ -36,7 +37,7 @@ const Dashboard = () => {
       setError("");
 
       try {
-        const response = await fetch("/api/bookings/my", {
+        const response = await fetch(buildApiUrl("/api/bookings/my"), {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -74,7 +75,7 @@ const Dashboard = () => {
     setError("");
 
     try {
-      const response = await fetch(`/api/bookings/${bookingId}`, {
+      const response = await fetch(buildApiUrl(`/api/bookings/${bookingId}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { buildApiUrl } from "../api/config";
 import FlightCard from "../components/FlightCard";
 import "./Search.css";
 
@@ -30,7 +31,7 @@ const Search = () => {
       }
 
       const query = queryParams.toString();
-      const url = query ? `/api/flights?${query}` : "/api/flights";
+      const url = query ? buildApiUrl(`/api/flights?${query}`) : buildApiUrl("/api/flights");
 
       const response = await fetch(url);
       const data = await response.json();

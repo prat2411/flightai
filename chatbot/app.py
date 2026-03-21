@@ -2,7 +2,6 @@ import os
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
-import gradio as gr
 import sqlite3
 
 # Load env
@@ -173,6 +172,8 @@ def chat(message, history):
 
 
 if __name__ == "__main__":
+    import gradio as gr
+
     gr.ChatInterface(fn=chat).launch(
         server_name="0.0.0.0",
         server_port=7860

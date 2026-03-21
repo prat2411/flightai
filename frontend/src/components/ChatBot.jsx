@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { buildChatbotUrl } from "../api/config";
 import "./ChatBot.css";
-
-const CHATBOT_API_BASE = process.env.REACT_APP_CHATBOT_URL || process.env.REACT_APP_CHATBOT_API_URL || "";
 
 const buildHistoryPairs = (messages) => {
 	const pairs = [];
@@ -61,7 +60,7 @@ const ChatBot = () => {
 		setLoading(true);
 
 		try {
-			const response = await fetch(`${CHATBOT_API_BASE}/chat`, {
+			const response = await fetch(buildChatbotUrl("/chat"), {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

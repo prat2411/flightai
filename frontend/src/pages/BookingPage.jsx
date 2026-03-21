@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import { buildApiUrl } from "../api/config";
 import { useAuth } from "../context/AuthContext";
 import "./BookingPage.css";
 
@@ -43,7 +44,7 @@ const Booking = () => {
       setError("");
 
       try {
-        const response = await fetch(`/api/flights/${flightIdFromQuery}`);
+        const response = await fetch(buildApiUrl(`/api/flights/${flightIdFromQuery}`));
         const data = await response.json();
 
         if (!response.ok) {
@@ -79,7 +80,7 @@ const Booking = () => {
     setBookingLoading(true);
 
     try {
-      const response = await fetch("/api/bookings", {
+      const response = await fetch(buildApiUrl("/api/bookings"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

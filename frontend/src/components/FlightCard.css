@@ -51,3 +51,33 @@
   color: #122f5d;
   font-size: 1rem;
 }
+
+.flight-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.flight-book-btn {
+  background: #1f63bb;
+  border: 1px solid #1f63bb;
+  border-radius: 10px;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 700;
+  justify-content: center;
+  min-width: 110px;
+  padding: 9px 14px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.flight-book-btn:hover {
+  background: #154c94;
+  border-color: #154c94;
+}
+
+.flight-sold-out {
+  color: #9b1c1c;
+  font-weight: 700;
+}

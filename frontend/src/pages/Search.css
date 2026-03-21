@@ -74,6 +74,35 @@
 
 @media (max-width: 920px) {
   .search-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-form button {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-page {
+    gap: 14px;
+  }
+
+  .search-form {
     grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .search-form label {
+    font-size: 0.84rem;
+  }
+
+  .search-form input,
+  .search-form button {
+    min-height: 42px;
+    width: 100%;
+  }
+
+  .search-form button {
+    grid-column: auto;
   }
 }

@@ -1,4 +1,5 @@
 import "./FlightCard.css";
+import { Link } from "react-router-dom";
 
 const formatFlightDate = (value) => {
   const parsed = new Date(value);
@@ -13,6 +14,8 @@ const formatFlightDate = (value) => {
 };
 
 const FlightCard = ({ flight }) => {
+  const hasSeats = Number(flight.seats) > 0;
+
   return (
     <article className="flight-card">
       <div className="flight-card-top">
@@ -33,6 +36,20 @@ const FlightCard = ({ flight }) => {
           <span className="metric-label">Seats</span>
           <strong className="metric-value">{flight.seats}</strong>
         </div>
+      </div>
+
+      <div className="flight-actions">
+        {hasSeats ? (
+          <Link
+            className="flight-book-btn"
+            to={flight._id ? `/booking?flightId=${encodeURIComponent(flight._id)}` : "/booking"}
+            state={{ flight }}
+          >
+            Book Now
+          </Link>
+        ) : (
+          <span className="flight-sold-out">Sold out</span>
+        )}
       </div>
     </article>
   );
