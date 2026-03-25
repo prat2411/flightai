@@ -11,13 +11,15 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 if groq_api_key:
     print(f"Groq API Key exists and begins {groq_api_key[:4]}")
 else:
-    raise ValueError("GROQ_API_KEY not found")
+    print("GROQ_API_KEY not found. Chatbot will use local fallback responses.")
 
 # OpenAI (Groq)
-client = OpenAI(
-    api_key=groq_api_key,
-    base_url="https://api.groq.com/openai/v1"
-)
+client = None
+if groq_api_key:
+    client = OpenAI(
+        api_key=groq_api_key,
+        base_url="https://api.groq.com/openai/v1"
+    )
 
 system_message = """
 You are a helpful and friendly assistant for an Airline called FlightAI.
@@ -93,6 +95,31 @@ tools = [
     }
 ]
 
+
+def fallback_reply(message):
+    text = (message or "").strip().lower()
+
+    price_markers = ("price", "fare", "ticket", "cost")
+    if any(marker in text for marker in price_markers):
+        for city in [
+            "london",
+            "paris",
+            "tokyo",
+            "sydney",
+            "new york",
+            "dubai",
+            "singapore",
+            "barcelona",
+        ]:
+            if city in text:
+                return f"Current ticket price to {city.title()} is {get_ticket_price(city)}."
+        return "I can help with fares. Try asking: 'What is the ticket price to Paris?'"
+
+    if "hello" in text or "hi" in text or "hey" in text:
+        return "Hello! I am FlightAI assistant. Ask me about destinations or ticket prices."
+
+    return "I am currently in limited mode. I can answer basic travel questions and ticket prices for supported cities."
+
 def handle_tool_calls(message):
     responses = []
 
@@ -125,6 +152,9 @@ def chat(message, history):
     print("User:", message, flush=True)
 
     try:
+        if client is None:
+            return fallback_reply(message)
+
         messages = []
         for human, assistant in history:
             messages.append({"role": "user", "content": human})
