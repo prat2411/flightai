@@ -23,4 +23,4 @@ class ChatResponse(BaseModel):
 @app.post("/chat", response_model=ChatResponse)
 def chat_endpoint(payload: ChatRequest) -> ChatResponse:
     reply = chat(payload.message, payload.history)
-    return ChatResponse(response=reply)
+    return ChatResponse(response=reply) 
